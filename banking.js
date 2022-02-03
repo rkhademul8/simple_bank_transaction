@@ -11,17 +11,31 @@ document.getElementById('deposite-button').addEventListener('click',function(){
     const depositeTotal=document.getElementById('deposite-total')
     const previousDepositeText=depositeTotal.innerText
     const previousDepositeAmount=parseFloat(previousDepositeText)
+    if(depositeAmount>0)
+    {
     const newDepositTotal=previousDepositeAmount+depositeAmount
     depositeTotal.innerText=newDepositTotal
+    }
+    else{
+        alert('oh!! man please check your input value')
+    }
     
     // update balance
      const balanceTotal=document.getElementById('balance-input')
      const previousBalanceText=balanceTotal.innerText
      const previousBalanceAmount=parseFloat(previousBalanceText)
-     const tatoalBalance=previousBalanceAmount+depositeAmount
-     balanceTotal.innerText=tatoalBalance
+     if(depositeAmount>0 ){
+        const tatoalBalance=previousBalanceAmount+depositeAmount
+        balanceTotal.innerText=tatoalBalance
+     }
+     
+     
     
 })
+
+
+
+
 
 // handle withdraw button event
 
@@ -36,14 +50,33 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
     const withdrawTotal=document.getElementById('withdraw-total')
     const previouswithdrawText=withdrawTotal.innerText
     const previouswithdrawAmount=parseFloat(previouswithdrawText)
-    const totalWithdraw=previouswithdrawAmount+withdrawAmount
-    withdrawTotal.innerText=totalWithdraw
 
-    // balance update after withdraw
-    const balanceTotal=document.getElementById('balance-input')
-    const previousBalanceText=balanceTotal.innerText
-    const previousBalanceAmount=parseFloat(previousBalanceText)
-    const tatoalBalance=previousBalanceAmount-withdrawAmount
-    balanceTotal.innerText=tatoalBalance
+
+     // balance update after withdraw
+   const balanceTotal=document.getElementById('balance-input')
+   const previousBalanceText=balanceTotal.innerText
+   const previousBalanceAmount=parseFloat(previousBalanceText)
+    
+
+
+    if(withdrawAmount>0 && withdrawAmount<=previousBalanceAmount){
+        const totalWithdraw=previouswithdrawAmount+withdrawAmount
+        withdrawTotal.innerText=totalWithdraw
+    }
+    else{
+        alert('oh!! man please check your input value')
+    }
+   
+
+
+  
+
+
+    if(withdrawAmount>0 && withdrawAmount<=previousBalanceAmount){
+        const tatoalBalance=previousBalanceAmount-withdrawAmount
+        balanceTotal.innerText=tatoalBalance
+    }
+    
+    
 
 })
